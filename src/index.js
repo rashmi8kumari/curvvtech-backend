@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const authRoutes = require("./routes/authRoutes");
 const deviceRoutes = require("./routes/deviceRoutes");
+const logRoutes = require("./routes/logRoutes");
+
 
 console.log("Mongo URI:", process.env.MONGO_URI);  // Debug line
 
@@ -11,8 +13,11 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+
 app.use("/auth", authRoutes);
 app.use("/devices", deviceRoutes);
+app.use("/", logRoutes);
 
 
 app.get("/", (req,res) => {
