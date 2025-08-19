@@ -20,7 +20,7 @@ app.use(rateLimiter);
 app.use("/auth", authRoutes);
 app.use("/devices", deviceRoutes);
 app.use("/", logRoutes);
-
+require("./jobs/deviceCleanupJob");
 
 app.get("/", (req,res) => {
     res.send("CurvvTech Backend is running...");
